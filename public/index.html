@@ -1,131 +1,110 @@
-<!--
-Copyright (c) 2011, salesforce.com, inc.
-All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met:
-
-   Redistributions of source code must retain the above copyright notice, this list of conditions and the
-   following disclaimer.
-
-   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and
-   the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-   Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or
-   promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
-WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
--->
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Force.com Canvas Ruby Quick Start</title>
-        <style type="text/css" media="screen">
-body {
-    margin: 0;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding: 10px;
-    background-color: #FFFFFF;
-    font-family: "Arial", "Helvetica", "sans-serif";
-    font-size: 75%;
-    color: #222222
-}
+        <head>
+ <title>Subscription Options | SupportPay</title>
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" rel="stylesheet" type="text/css" />
+<link href="//fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet" type="text/css" />    
+<link rel="stylesheet" href="application.css" type="text/css" />
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="../javascripts/recurly.js"></script>
 
-h1 {
-    font-size: 28px;
-    color: #000
-}
-
-#page {
-    background-color: #FFFFFF;
-    width: 800px;
-    margin: 0;
-    margin-left: 0;
-    margin-right: 0
-}
-
-#content {
-    float: left;
-    background-color: white;
-    border: 3px solid #aaa;
-    padding: 25px;
-    width: 700px
-}
-
-#header {
-    padding-left: 75px;
-    padding-right: 30px
-}
-
-#header h1, #header h2 {
-    margin: 0
-}
-
-#canvas-content {
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-    padding-top: 0
-}
-
-#footer {
-    clear: both
-}
-
-#header {
-    background-image: url("/assets/logo.png");
-    background-repeat: no-repeat;
-    background-position: top left;
-    height: 64px
-}
-
-#canvas-content h1 {
-    margin: 0;
-    font-size: 20px
-}
-
-#canvas-content h2 {
-    margin: 0;
-    font-size: 14px;
-    font-weight: normal;
-    color: #333;
-    margin-bottom: 25px
-}
-
-#canvas-content a
-{
-    color: #333;
-    text-decoration: none;
-}
-
-#canvas-content a:hover
-{
-    color: #199BD2;
-    text-decoration: none;
-}
-        </style>
-    </head>
+<!--[if lte IE 7]><apex:includescript src="/resource/1384554884000/js/lte-ie7.js "></script><![endif]-->
+ </head>
     <body>
-      <div id="page">
-        <div id="content">
-          <div id="header">
-            <h1>Subscription App</h1>
-          </div>
-          <div id="canvas-content">
-              <h2>
-                  Landing page for subscriptions
-              </h2>
-          </div>
-        </div>
-      `
-        <div id="footer">&nbsp;</div>
-      </div>
+      <div class="container grid">
+       <div class="mb10 center">
+        <h1>Subscription Plans &amp; Pricing</h1>
+        <h1><small>Support SupportPay so We Can Support You</small></h1>
+       </div><br />
+      <div class="ui-state-error ui-widget-header" id="errorDiv" style="display:none"></div>
+        <div class="w-pricing " style="margin:0 auto;">
+         <div class="w-pricing-item type_primary">
+          <div class="w-pricing-item-h ">
+           <div class="w-pricing-item-header">
+            <div class="w-pricing-item-title">Premium</div>
+            <div class="w-pricing-item-price-background">
+            <div class="w-pricing-item-price-primary">             </div>
+              <div class="w-pricing-item-price">
+             $4.99<small>per month</small></div></div>
+             <div class="w-pricing-item-price-secondary type_secondary ">
+              <h2 class="orange">LIMITED TIME</h2>
+              <h5><strong>Lock in Price For Life*</strong></h5></div></div>
+           <div class="">           <div class="w-pricing-item" >            <ul class="w-pricing-item-features">
+             <li class="w-pricing-item-feature">              Schedule Base Support             </li>
+             <li class="w-pricing-item-feature">              Manage Additional Expenses             </li>
+             <li class="w-pricing-item-feature">              Make Payments - Online or Manual             </li>
+             <li class="w-pricing-item-feature">              Store Docs &amp; Receipts             </li>
+             <li class="w-pricing-item-feature">
+              Notifications &amp; Reminders             </li>            </ul>           </div>
+         <div class="w-pricing-item" >
+            <ul class="w-pricing-item-features">
+<li class="w-pricing-item-feature">
+              Long Term Storage &amp; History             </li>
+             <li class="w-pricing-item-feature">
+              Organize by Child             </li>
+             <li class="w-pricing-item-feature">
+              Certified Documents &#8211; Tax &amp; Court             </li>
+             <li class="w-pricing-item-feature">
+              Standard &amp; Custom Category Tracking             </li>
+             <li class="w-pricing-item-feature">
+              All Your Child Finances in One Location             </li></ul>                      </div>                       </div>
+<div class="mt10 mb10">
+             <a class="btn btn-link mt10" href="#" onClick="MyWindow=window.open('http://supportpay.com/products/#features',                 'MyWindow','width=900,heig&#8204;ht=700'); return false;">And all these features</a>
+</div>           <div class="w-pricing-item-footer">
+
+ <%= link_to 'I WANT THE INNOVATOR DEAL', new_user_registration_path(:plan => 'innovator'), :class => 'btn btn-success btn-large' %>
+               
+                        </div>          </div>         </div>
+          <div class="w-pricing-item type_featured">
+           <div class="w-pricing-item-h yearly">
+            <div class="w-pricing-item-header">
+             <div class="w-pricing-item-title ">Premium - Yearly             </div>
+             <div class="w-pricing-item-price-background">
+            <div class="w-pricing-item-price-yearly">             </div>
+              <div class="w-pricing-item-price yearly">              $49.99
+              <small>per year</small>             </div>
+               </div>               </div>
+           <div class="w-pricing-item" >            <ul class="w-pricing-item-features type_primary w-pricing-item-features-primary" style="margin-top:5px;">
+             <li class="w-pricing-item-feature">                 <h4>Features of &#8220;Premium&#8221;&nbsp;</h4> <h4 class="green"><strong>PLUS&#8230; </strong></h4> </li>
+             <li class="w-pricing-item-feature">              An AMAZING price</li>             <li class="w-pricing-item-feature">                 Only <span class="green" style="font-size:21px;font-weight:700;">96&cent;</span> /week                 </li>
+             <li class="w-pricing-item-feature">                 or <span class="teal" style="font-size:16px;font-weight:700;">14&cent;</span> /day             </li>
+             <li class="w-pricing-item-feature">              Get it now! </li>
+                <li class="w-pricing-item-feature">This deal <div class="orange"><strong>WILL NOT LAST
+                    </strong></div>             </li> </ul>               </div>
+            <div class="w-pricing-item-footer type_primary w-pricing-item-footer-primary">
+       
+
+        <%= link_to 'I WANT THE YEARLY DEAL', new_user_registration_path(:plan => 'innovator-yearly'), :class => 'btn btn-warning btn-large' %>
+
+
+
+             </div></div></div>
+ <div class="w-pricing-item type_mobile">
+           <div class="w-pricing-item-h mobile ">
+            <div class="w-pricing-item-header">
+             <div class="w-pricing-item-title title-mobile">              Mobile             </div>
+             <div class="w-pricing-item-price-background">
+              <div class="w-pricing-item-price-background">
+       <div class="w-pricing-item-price-background">
+            <div class="w-pricing-item-price-mobile">             </div>
+              <div class="w-pricing-item-price mobile_price">FREE<small>with subscription</small>             </div>           </div>
+              </div>             </div>             </div>
+               <div class="w-pricing-item" >
+            <ul class="w-pricing-item-features" style="margin-top:5px;">
+             <li class="w-pricing-item-feature">
+              Enter expenses from your mobile device             </li>
+             <li class="w-pricing-item-feature">
+              Upload receipts by taking a picture             </li>
+             <li class="w-pricing-item-feature">
+              Make Payments             </li>            </ul></div>
+            <div class="w-pricing-item-footer">
+             <a class="apple" href="https://itunes.apple.com/us/app/supportpay/id808332758?ls=1&amp;mt=8"></a>
+             <a class="google" href="https://play.google.com/store/apps/details?id=com.supportpay&amp;hl=en">
+             </a>            </div>           </div>          </div>            <p style="margin-top: 15px; font-size: 10px;">
+             <em>* You keep this monthly price as long as you don&#8217;t cancel your subscription.</em>
+            </p>           </div>          
+            </div>
+            
     </body>
  </html>
