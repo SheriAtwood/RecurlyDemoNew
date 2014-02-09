@@ -11,12 +11,12 @@ group :development do
   gem 'rubysl',                    :platforms => :rbx
   gem 'rubysl-resolv', '~> 2.0',   :platforms => :rbx
   gem 'racc',                      :platforms => :rbx
-gem 'rails_12factor', group: :production
+
 end
 
-
+gem 'rails_12factor', group: :production
 gem 'rails', '3.2.12'
-gem 'bundler', '1.1.5'
+gem 'bundler', '1.5.3'
 
 # Gems used only for assets and not required
 # in production environments by default.

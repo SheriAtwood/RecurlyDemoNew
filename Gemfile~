@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-<<<<<<< HEAD
+
 gemspec
 
 group :development do
@@ -13,10 +13,10 @@ group :development do
   gem 'racc',                      :platforms => :rbx
 gem 'rails_12factor', group: :production
 end
-=======
+
 
 gem 'rails', '3.2.12'
-gem 'bundler', '1.1.5'
+gem 'bundler', '1.5.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,4 +27,3 @@ group :assets do
 end
 
 gem 'jquery-rails'
->>>>>>> 993dcc5863587f1f4be47249a0b220ece9eb85cd
