@@ -7,7 +7,7 @@ Rake::TestTask.new :spec do |t|
 end
 
 task :default => :spec
-RAILS_ENV=production bundle exec rake assets:precompile
+
 
 #!/usr/bin/env rake
 # Add your own tasks in files placed in lib/tasks ending in .rake,
