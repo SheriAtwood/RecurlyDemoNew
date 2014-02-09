@@ -1,16 +1,3 @@
-require 'rake/testtask'
-
-Rake::TestTask.new :spec do |t|
-  t.libs << 'spec'
-  t.pattern = 'spec/**/*_spec.rb'
-  t.warning = true
-end
-
-task :default => :spec
-#!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
 # Copyright (c) 2011, salesforce.com, inc.
 # All rights reserved.
 #
@@ -34,7 +21,28 @@ task :default => :spec
 # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+class CanvasController < ApplicationController
+  # GET /canvas
+  def index
+  end
 
-require File.expand_path('../config/application', __FILE__)
+  # POST /canvas
+  def post
+    @sr = params[:signed_request]
 
-CanvasRuby::Application.load_tasks
+    # Validate the signed request was provided.
+    raise "Signed request parameter required." if @sr.blank?()
+
+    # Retrieve consumer secret from environment
+    secret = ENV["CANVAS_CONSUMER_SECRET"]
+    raise "No consumer secret found in environment [CANVAS_CONSUMER_SECRET]." if secret.blank?()
+
+    # Construct the signed request helper
+    srHelper = SignedRequest.new(secret,@sr)
+
+    # Verify and decode the signed request.
+    @canvasRequestJson = srHelper.verifyAndDecode()
+
+  end
+
+end

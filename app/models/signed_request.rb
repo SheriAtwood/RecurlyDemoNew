@@ -1,16 +1,3 @@
-require 'rake/testtask'
-
-Rake::TestTask.new :spec do |t|
-  t.libs << 'spec'
-  t.pattern = 'spec/**/*_spec.rb'
-  t.warning = true
-end
-
-task :default => :spec
-#!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
 # Copyright (c) 2011, salesforce.com, inc.
 # All rights reserved.
 #
@@ -34,7 +21,41 @@ task :default => :spec
 # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+require "openssl"
+require "base64"
 
-require File.expand_path('../config/application', __FILE__)
+class SignedRequest
 
-CanvasRuby::Application.load_tasks
+  # Construct a SignedRequest based on the stringified version of it.
+  def initialize(consumerSecret, signedRequest)
+    @consumerSecret = consumerSecret
+    @signedRequest = signedRequest
+  end
+
+  # Validates the signed request by verifying the key, then returns
+  # the json string.
+  def  verifyAndDecode()
+
+    # Validate secret and signed request string.
+    raise "Consumer secret not set." if @consumerSecret.blank?()
+    raise "Signed request not set." if @signedRequest.blank?()
+
+    # 1) Split the signed request into signature and payload.
+    array = @signedRequest.split('.')
+    raise "Incorrectly formatted signed request." if array.length != 2
+    signature = array[0]
+    payload = array[1]
+
+    # 2) Verify the contents of the payload by first validating the authenticity
+    #    of the signature.
+    decodedSignature = Base64.decode64(signature)
+    digest = OpenSSL::Digest::Digest.new("sha256")
+    hmac = OpenSSL::HMAC.digest(digest, @consumerSecret, payload)
+    raise "Signed request has been tampered with." if decodedSignature != hmac
+
+    # 3) Decode the base64 encoded payload of the canvas request.
+    jsonString = Base64.decode64(payload).gsub("'","\\\\'")
+    return jsonString
+
+  end
+end

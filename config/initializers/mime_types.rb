@@ -1,16 +1,3 @@
-require 'rake/testtask'
-
-Rake::TestTask.new :spec do |t|
-  t.libs << 'spec'
-  t.pattern = 'spec/**/*_spec.rb'
-  t.warning = true
-end
-
-task :default => :spec
-#!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
 # Copyright (c) 2011, salesforce.com, inc.
 # All rights reserved.
 #
@@ -35,6 +22,8 @@ task :default => :spec
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-require File.expand_path('../config/application', __FILE__)
+# Be sure to restart your server when you modify this file.
 
-CanvasRuby::Application.load_tasks
+# Add new mime types for use in respond_to blocks:
+# Mime::Type.register "text/richtext", :rtf
+# Mime::Type.register_alias "text/html", :iphone

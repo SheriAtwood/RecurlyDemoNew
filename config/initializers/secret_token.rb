@@ -1,16 +1,3 @@
-require 'rake/testtask'
-
-Rake::TestTask.new :spec do |t|
-  t.libs << 'spec'
-  t.pattern = 'spec/**/*_spec.rb'
-  t.warning = true
-end
-
-task :default => :spec
-#!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
 # Copyright (c) 2011, salesforce.com, inc.
 # All rights reserved.
 #
@@ -35,6 +22,10 @@ task :default => :spec
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-require File.expand_path('../config/application', __FILE__)
+# Be sure to restart your server when you modify this file.
 
-CanvasRuby::Application.load_tasks
+# Your secret key for verifying the integrity of signed cookies.
+# If you change this key, all old signed cookies will become invalid!
+# Make sure the secret is at least 30 characters and all random,
+# no regular words or you'll be exposed to dictionary attacks.
+CanvasRuby::Application.config.secret_token = '59a9c83f797c648848d0324b4add7ab836d4251a1eede98bd7ab02f192a03ba0ebfc648a38ec3f83f238ce4c556723af5da9d718254903f3a93a16cc0ce9659a'
