@@ -16,7 +16,7 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'rails', '3.2.12'
-
+gem 'recurly'
 gem 'bundler', '1.5.3'
 
 # Gems used only for assets and not required
