@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require recurly
+//= require registrations.js
 //= require_tree .
