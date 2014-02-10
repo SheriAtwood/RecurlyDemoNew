@@ -1,29 +1,124 @@
-# Copyright (c) 2011, salesforce.com, inc.
-# All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without modification, are permitted provided
-# that the following conditions are met:
-#
-#    Redistributions of source code must retain the above copyright notice, this list of conditions and the
-#    following disclaimer.
-#
-#    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and
-#    the following disclaimer in the documentation and/or other materials provided with the distribution.
-#
-#    Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or
-#    promote products derived from this software without specific prior written permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY OF SUCH DAMAGE.
-require 'rubygems'
+# Don't change this file!
+# Configure your app in config/environment.rb and config/environments/*.rb
 
-# Set up gems listed in the Gemfile.
-ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
+RAILS_ROOT = "#{File.dirname(__FILE__)}/.." unless defined?(RAILS_ROOT)
 
-require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
+module Rails
+  class << self
+    def boot!
+      unless booted?
+        preinitialize
+        pick_boot.run
+      end
+    end
+
+    def booted?
+      defined? Rails::Initializer
+    end
+
+    def pick_boot
+      (vendor_rails? ? VendorBoot : GemBoot).new
+    end
+
+    def vendor_rails?
+      File.exist?("#{RAILS_ROOT}/vendor/rails")
+    end
+
+    def preinitialize
+      load(preinitializer_path) if File.exist?(preinitializer_path)
+    end
+
+    def preinitializer_path
+      "#{RAILS_ROOT}/config/preinitializer.rb"
+    end
+  end
+
+  class Boot
+    def run
+      load_initializer
+      Rails::Initializer.run(:set_load_path)
+    end
+  end
+
+  class VendorBoot < Boot
+    def load_initializer
+      require "#{RAILS_ROOT}/vendor/rails/railties/lib/initializer"
+      Rails::Initializer.run(:install_gem_spec_stubs)
+      Rails::GemDependency.add_frozen_gem_path
+    end
+  end
+
+  class GemBoot < Boot
+    def load_initializer
+      self.class.load_rubygems
+      load_rails_gem
+      require 'initializer'
+    end
+
+    def load_rails_gem
+      if version = self.class.gem_version
+        gem 'rails', version
+      else
+        gem 'rails'
+      end
+    rescue Gem::LoadError => load_error
+      $stderr.puts %(Missing the Rails #{version} gem. Please `gem install -v=#{version} rails`, update your RAILS_GEM_VERSION setting in config/environment.rb for the Rails version you do have installed, or comment out RAILS_GEM_VERSION to use the latest version installed.)
+      exit 1
+    end
+
+    class << self
+      def rubygems_version
+        Gem::RubyGemsVersion rescue nil
+      end
+
+      def gem_version
+        if defined? RAILS_GEM_VERSION
+          RAILS_GEM_VERSION
+        elsif ENV.include?('RAILS_GEM_VERSION')
+          ENV['RAILS_GEM_VERSION']
+        else
+          parse_gem_version(read_environment_rb)
+        end
+      end
+
+      def load_rubygems
+        min_version = '1.3.2'
+        require 'rubygems'
+        unless rubygems_version >= min_version
+          $stderr.puts %Q(Rails requires RubyGems >= #{min_version} (you have #{rubygems_version}). Please `gem update --system` and try again.)
+          exit 1
+        end
+
+      rescue LoadError
+        $stderr.puts %Q(Rails requires RubyGems >= #{min_version}. Please install RubyGems and try again: http://rubygems.rubyforge.org)
+        exit 1
+      end
+
+      def parse_gem_version(text)
+        $1 if text =~ /^[^#]*RAILS_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
+      end
+
+      private
+        def read_environment_rb
+          File.read("#{RAILS_ROOT}/config/environment.rb")
+        end
+    end
+  end
+end
+
+class Rails::Boot
+  def run
+    load_initializer
+
+    Rails::Initializer.class_eval do
+      def load_gems
+        @bundler_loaded ||= Bundler.require :default, Rails.env
+      end
+    end
+
+    Rails::Initializer.run(:set_load_path)
+  end
+end
+
+# All that for this:
+Rails.boot!

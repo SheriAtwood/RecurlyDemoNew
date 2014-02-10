@@ -1,32 +1,15 @@
-# Copyright (c) 2011, salesforce.com, inc.
-# All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without modification, are permitted provided
-# that the following conditions are met:
-#
-#    Redistributions of source code must retain the above copyright notice, this list of conditions and the
-#    following disclaimer.
-#
-#    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and
-#    the following disclaimer in the documentation and/or other materials provided with the distribution.
-#
-#    Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or
-#    promote products derived from this software without specific prior written permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY OF SUCH DAMAGE.
-
 # Be sure to restart your server when you modify this file.
 
-CanvasRuby::Application.config.session_store :cookie_store, key: '_canvas_ruby_session'
+# Your secret key for verifying cookie session data integrity.
+# If you change this key, all old sessions will become invalid!
+# Make sure the secret is at least 30 characters and all random, 
+# no regular words or you'll be exposed to dictionary attacks.
+ActionController::Base.session = {
+  :key         => '_recurly-client-app-ruby_session',
+  :secret      => '5eb64ece0944afd1fc4131c9e8963143b5ad1b803ff9ca39d446aa85271e5925ca6a31f7765e37c405e1ecb67730a725b3e081dd85d550cce3147ae3f04c17b9'
+}
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
-# (create the session table with "rails generate session_migration")
-# CanvasRuby::Application.config.session_store :active_record_store
+# (create the session table with "rake db:sessions:create")
+# ActionController::Base.session_store = :active_record_store
