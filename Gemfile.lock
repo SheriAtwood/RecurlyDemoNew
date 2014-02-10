@@ -132,6 +132,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.10.0)
+    ruby (0.1.0)
     rubysl (2.0.15)
       rubysl-abbrev (~> 2.0)
       rubysl-base64 (~> 2.0)
@@ -379,6 +380,7 @@ DEPENDENCIES
   recurly (~> 2.2.1)
   redcarpet
   rspec-rails (= 2.10.0)
+  ruby
   rubysl
   rubysl-resolv (~> 2.0)
   sass-rails (~> 3.2.3)
