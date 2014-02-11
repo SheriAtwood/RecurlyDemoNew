@@ -1,12 +1,20 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
+<<<<<<< HEAD
 require "active_record/railtie"
+=======
+# require "active_record/railtie"
+>>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+<<<<<<< HEAD
 # require "rails/test_unit/railtie"
+=======
+require "rails/test_unit/railtie"
+>>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -15,7 +23,11 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+<<<<<<< HEAD
 module RecurlyRails
+=======
+module CanvasRuby
+>>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -57,7 +69,11 @@ module RecurlyRails
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
+<<<<<<< HEAD
     config.active_record.whitelist_attributes = true
+=======
+    # config.active_record.whitelist_attributes = true
+>>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 
     # Enable the asset pipeline
     config.assets.enabled = true
