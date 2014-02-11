@@ -1,11 +1,6 @@
-
 require 'rake/testtask'
 
-Rake::TestTask.new :spec do |t|
-  t.libs << 'spec'
-  t.pattern = 'spec/**/*_spec.rb'
-  t.warning = true
-end
+
 
 task :default => :spec
 
@@ -16,7 +11,7 @@ task :default => :spec
 require File.expand_path('../config/application', __FILE__)
 
 RecurlyRails::Application.load_tasks
-=======
+
 # Copyright (c) 2011, salesforce.com, inc.
 # All rights reserved.
 #
