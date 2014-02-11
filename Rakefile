@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 require 'rake/testtask'
 
 Rake::TestTask.new :spec do |t|
@@ -10,13 +9,10 @@ end
 
 task :default => :spec
 
-
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 #!/usr/bin/env rake
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-<<<<<<< HEAD
 require File.expand_path('../config/application', __FILE__)
 
 RecurlyRails::Application.load_tasks
@@ -48,4 +44,3 @@ RecurlyRails::Application.load_tasks
 require File.expand_path('../config/application', __FILE__)
 
 CanvasRuby::Application.load_tasks
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
