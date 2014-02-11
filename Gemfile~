@@ -1,22 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.7'
-<<<<<<< HEAD
 gem 'bootstrap-sass', '~> 2.0.4.0'
-=======
-gem 'ruby'
 
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'json'
-<<<<<<< HEAD
 gem 'recurly', '~> 2.1.5'
 gem 'bcrypt-ruby', '3.0.1'
 
 group :development, :test do
-=======
 gem 'recurly', '~> 2.2.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'bundler', '1.5.3'
@@ -31,49 +25,34 @@ group :development do
   gem 'rubysl',                    :platforms => :rbx
   gem 'rubysl-resolv', '~> 2.0',   :platforms => :rbx
   gem 'racc',                      :platforms => :rbx
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 	gem 'sqlite3'
 	gem 'rspec-rails', '2.10.0'
 	gem 'guard-rspec', '0.5.5'
 end
-
 group :production do
 	gem 'pg' , '0.12.2'
+gem 'rails_12factor'
 end
-
-<<<<<<< HEAD
 group :test do 
 	gem 'capybara', '1.1.2'
 	gem 'guard-spork'
 	gem 'spork', '0.9.0'
 	gem "launchy", "~> 2.1.2"
 end
-=======
-gem 'rails_12factor', group: :production
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-<<<<<<< HEAD
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-=======
 
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '1.2.3'
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
 end
 
 gem 'jquery-rails'
-
-<<<<<<< HEAD
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -88,5 +67,3 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
-=======
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
