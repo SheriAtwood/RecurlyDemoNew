@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 RecurlyRails::Application.initialize!
-=======
 # Be sure to restart your server when you modify this file
 
 # Specifies gem version of Rails to use when vendor/rails is not present
@@ -44,5 +42,3 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
-
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d

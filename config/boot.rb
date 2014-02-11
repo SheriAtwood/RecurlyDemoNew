@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 require 'rubygems'
 
 # Set up gems listed in the Gemfile.
@@ -9,7 +9,7 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 # Check for required environment variables
 raise 'Set your RECURLY_API_KEY environment variable' unless ENV.has_key? 'RECURLY_API_KEY'
 raise 'Set your RECURLY_JS_PRIVATE_KEY environment variable' unless ENV.has_key? 'RECURLY_JS_PRIVATE_KEY'
-=======
+
 # Don't change this file!
 # Configure your app in config/environment.rb and config/environments/*.rb
 
@@ -134,4 +134,3 @@ end
 
 # All that for this:
 Rails.boot!
->>>>>>> e8bf2e907edb2d8536f6bd5dacd579d87a5a1a2d
